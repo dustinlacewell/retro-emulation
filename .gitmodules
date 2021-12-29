@@ -1,0 +1,3 @@
+[submodule "n64/games/oot/decomp/oot"]
+	path = n64/games/oot/decomp/oot
+	url = git@github.com:dustinlacewell/oot.git
