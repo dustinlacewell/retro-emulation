@@ -1,0 +1,29 @@
+#+title: Ocarina of Time
+* Decomp
+
+In order to build for MIPS the following environment variable needs setting:
+
+#+begin_src shell
+export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
+#+end_src
+
+** baserom_original.n64
+
+A Master Quest US debug rom is required for asset extraction.
+
+Place the rom as =decomp/baserom_original.n64=
+
+md5sum: =dde376d47187b931820d5b2957cded14=
+
+** Building
+
+#+begin_src shell
+  cd decomp/
+  nix-build . -o zelda_ocarina_mq_dbg.z64
+#+end_src
+
+
+*** zapd.patch
+
+On Nix, we need to patch a file in ZAPD to prevent it from trying to use git
+where there is none.
