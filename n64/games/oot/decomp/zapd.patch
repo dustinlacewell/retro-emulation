@@ -1,0 +1,13 @@
+diff --git a/tools/ZAPD/ZAPD/genbuildinfo.py b/tools/ZAPD/ZAPD/genbuildinfo.py
+index 91a567d31..86d95d5b7 100644
+--- a/tools/ZAPD/ZAPD/genbuildinfo.py
++++ b/tools/ZAPD/ZAPD/genbuildinfo.py
+@@ -10,7 +10,7 @@ parser.add_argument("--devel", action="store_true")
+ args = parser.parse_args()
+ 
+ with open("build/ZAPD/BuildInfo.cpp", "w+") as buildFile:
+-    label = subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
++    label = "dev" # subprocess.check_output(["git", "describe", "--always"]).strip().decode("utf-8")
+     now = datetime.now()
+     if args.devel:
+         label += " ~ Development version"
