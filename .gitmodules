@@ -1,3 +1,6 @@
 [submodule "n64/games/oot/decomp/oot"]
 	path = n64/games/oot/decomp/oot
 	url = git@github.com:dustinlacewell/oot.git
+[submodule "n64/modloader/ModLoader64"]
+	path = n64/modloader/ModLoader64
+	url = git@github.com:hylian-modding/ModLoader64.git
