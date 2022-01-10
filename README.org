@@ -1,0 +1,15 @@
+#+title: retro-emu.nix
+
+This is a repository of various retro romhacking and modding tools for Nix.
+
+Where appropriate, git submodules are provided to make the needed source
+repositories available for local development.
+
+*Warning*: I suck at Nix, and this repository is nascent.
+
+
+* What you can currently do
+
+- *Super Mario 64* ROM compilation from source
+- *Ocarina of Time* ROM compilation from source
+- *ModLoader64* binary release and local development support
