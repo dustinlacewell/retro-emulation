@@ -7,3 +7,6 @@
 [submodule "n64/modloader/ModLoader64"]
 	path = n64/modloader/ModLoader64
 	url = git@github.com:hylian-modding/ModLoader64.git
+[submodule "n64/modloader/plugin_template"]
+	path = n64/modloader/plugin_template
+	url = git@github.com:hylian-modding/z64lib_plugin_template.git
