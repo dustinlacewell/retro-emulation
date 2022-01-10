@@ -2,25 +2,20 @@
 
 let
   pkgs = import <nixpkgs> {};
-in
-{
-  pkgsNative ? import <nixpkgs> { }
-  ,pkgsCross ? import <nixpkgs> {
+  crossPkgs = import <nixpkgs> {
     crossSystem = {
       config = "mips-linux-gnu";
     };
-  }
-}:
-
-pkgsCross.mkShell {
+  };
+in with pkgs;
+crossPkgs.mkShell {
   buildInputs = [
-    pkgsCross.gcc
-    pkgsNative.libpng
+    libpng
+    crossPkgs.gcc
   ];
   nativeBuildInputs = [
-    pkgsNative.git
-    pkgsNative.gcc
-    pkgsNative.python3
-    pkgsNative.mupen64plus
+    git
+    gcc
+    python3
   ];
 }

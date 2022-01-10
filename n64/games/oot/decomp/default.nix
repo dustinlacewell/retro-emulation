@@ -1,15 +1,13 @@
 { pkgs ? import <nixpkgs> { } }:
 
-
-
 let
   crossPkgs = import <nixpkgs> {
     crossSystem = {
       config = "mips-linux-gnu";
     };
   };
-  toolchain = crossPkgs.stdenv.mkDerivation {
-    name = "oot-decomp-toolchain";
+in crossPkgs.stdenv.mkDerivation {
+    name = "oot-decomp";
 
     src = ./oot;
 
@@ -25,11 +23,27 @@ let
       pkgs.python3
     ];
 
+    dontInstall = true;
+
+    patches = [
+      ./zapd.patch
+    ];
+
     buildPhase = ''
-      cp ${./patch.sh} ./patch.sh
-      cp ${./baserom_original.n64} .
-      bash ./patch.sh
+      cp ${./baserom_original.n64} ./baserom_original.n64
+
+      interp=$(patchelf --print-interpreter $(which env))
+      for version in 5.3 7.1; do
+          for tool in cc cfe uopt ugen as1; do
+              patchelf --set-interpreter $interp ./tools/ido_recomp/linux/$version/$tool
+          done
+      done
+
       make setup
+      make -j8
+
+      cp zelda_ocarina_mq_dbg.z64 $out
     '';
-  };
-in toolchain
+
+
+  }
