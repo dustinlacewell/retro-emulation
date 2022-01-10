@@ -1,0 +1,25 @@
+#+title: ModLoader64
+
+* Release
+#+begin_src shell
+  nix-build .
+  ./result
+#+end_src
+
+Creates a script which can install/run ML64 out of =~/.config/ModLoader64/=
+
+* Development
+
+#+begin_src shell
+  nix-shell
+  cd ModLoader64/
+  yarn
+  yarn build
+  yarn start
+#+end_src
+
+* sfml_audio.node
+
+Using the stock =sfml_audio.node= results in a failure to find =libnode.so.64=.
+
+=./sfml_audio.node= should be copied into =ModLoader64/emulator/= to resolve.
